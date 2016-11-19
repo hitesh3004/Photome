@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Pics</title>
+</head>
+<body>
+    <form method="post" action="{{ url_for('browse_pics') }}" enctype=multipart/form-data>
+        <p>Welcome</p>
+        <input type="submit" value="click to see all pics" />
+    </form>
+    {% if photos %}
+    <h2>Here's all photos</h2>
+        <ul>
+            {% for photo in photos %}
+                <li><img src='data:image/png;base64, {{photo.pic}}' style="width:128px;height:128px;"/>
+                    <p>caption : {{ photo.caption }}</p>
+                    <p>tags : {{ photo.tags }}</p>
+                    <p>likes : {{ photo.likes }}</p>
+                    <form method="post" action="{{ url_for('navigate_comment') }}" enctype=multipart/form-data>
+                        <input type="submit" value="add comment"/>
+                        <input type="hidden" name="photo_id" value="{{ photo.photoid }}"/>
+                    </form>
+                </li>
+                <form method="post" action="{{ url_for('add_all_like') }}" enctype=multipart/form-data>
+                    <input type="submit" value="like"/>
+                    <input type="hidden" name="photo_id" value="{{ photo.photoid }}"/>
+                    <input type="hidden" name="album_id" value="{{ photo.albumid }}"/>
+                </form>
+
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AlbumId : {{ album_id }}</title>
+</head>
+<body>
+    <p>You can add pics here : </p>
+
+    <form method="post" action="{{ url_for('upload_photos') }}" enctype=multipart/form-data>
+        <input type="hidden" name="album_id" value="{{ album_id }}"/>
+        <label for="photo">Select photo:</label>
+        <input type="file" name="photo" required='true' /><br />
+        <label for="caption">Please caption:</label>
+        <input type="text" name="caption" required='true' /><br />
+        <label for="tags">Tags : </label>
+        <input type="text" name="tags" required="true"/>
+        <input type="submit" value="Upload" /></br>
+    </form>
+    {% if photos %}
+    <h2>Here's your photos</h2>
+        <ul>
+            {% if message %}
+                <h3 style="color:red;">{{ message}}</h3>
+            {% endif %}
+            {% for photo in photos %}
+                <li><img src='data:image/png;base64, {{photo.pic}}' style="width:128px;height:128px;"/>
+                    <p>caption : {{ photo.caption }}</p>
+                    <p>tags : {{ photo.tags }}</p>
+                    <p>likes : {{ photo.likes }}</p>
+                </li>
+                <form method="post" action="{{ url_for('add_like') }}" enctype=multipart/form-data>
+                    <input type="submit" value="like"/>
+                    <input type="hidden" name="photo_id" value="{{ photo.photoid }}"/>
+                    <input type="hidden" name="album_id" value="{{ photo.albumid }}"/>
+                </form>
+                <form method="post" action="{{ url_for('delete_photo') }}" enctype="multipart/form-data">
+                    <input type="submit" value="delete"/>
+                    <input type="hidden" name="photo_id" value="{{ photo.photoid }}"/>
+                    <input type="hidden" name="album_id" value="{{ photo.albumid }}"/>
+                </form>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top tags</title>
+</head>
+<body>
+    <table style="table-layout:fixed">
+        {% if tag_trends %}
+            <h3>Here is a list of top 10 tags</h3>
+            <tr>
+                <th>Tags</th>
+                <th>Photo Id</th>
+                <th>Count</th>
+            </tr>
+            {% for trends in tag_trends %}
+                <tr>
+                    <td style="width: 20px">{{ trends.tag_text }}</td>
+                    <td style="width: 20px">{{ trends.photo_id }}</td>
+                    <td style="width: 20px">{{ trends.count }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+</body>
+</html>

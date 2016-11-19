@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get photos by tags</title>
+</head>
+<body>
+    <form method="post" action="{{ url_for('photos_by_tags') }}" enctype=multipart/form-data>
+        <label for="tag_search">Enter tag that you wish to search : </label>
+        <input type="text" name="tag_search" required='true'/></br>
+        <input type="submit" value="Search"/>
+    </form>
+
+    {% if photos %}
+    <h2>Here's your photos</h2>
+        <ul>
+            {% for photo in photos %}
+            <li><img src='data:image/png;base64, {{photo.pic}}' style="width:128px;height:128px;"/>
+                <p>caption : {{ photo.caption }}</p>
+                <p>tags : {{ photo.tags }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 10 Users</title>
+</head>
+<body>
+    {% if user_trends %}
+        <p>top 10 user ids</p>
+        {% for utrends in user_trends %}
+            <p>{{ utrends }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

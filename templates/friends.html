@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend List</title>
+</head>
+<body>
+    <form method="post" action="{{ url_for('friend_lookup') }}">
+        <label for="friend_name">Search friend:</label>
+        <input type="text" name="friend_name"/><br />
+        <input type="submit" value="Search"/>
+    </form>
+    <table style="width:50%">
+    {% if friends %}
+            {%for friend in friends %}
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email Id</th>
+                </tr>
+                <tr>
+                    <td>{{ friend.fname }}</td>
+                    <td>{{ friend.lname }}</td>
+                    <td>{{ friend.email }}</td>
+                    <form method="post" action="{{ url_for('addin_friendlist') }}">
+                        <td><input type="submit" value="Add"/></td>
+                        <input type="hidden" name="uid" value="{{ friend.userid }}"/>
+                    </form>
+                </tr>
+            {% endfor %}
+    {% endif %}
+    </table>
+    <table style="width:50%">
+        {% if yourFriends %}
+            <h3>Here is a list of your existing friends</h3>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email Id</th>
+            </tr>
+            {% for yourF in yourFriends %}
+                <tr>
+                    <td>{{ yourF.fname }}</td>
+                    <td>{{ yourF.lname }}</td>
+                    <td>{{ yourF.email }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+</head>
+<body>
+    {% if message %}
+        <h3 style="color: red;">{{ message }}</h3>
+    {% endif %}
+    {% if(picture) %}
+        <img src='data:image/png;base64, {{picture}}' style="width:128px;height:128px;"/>
+
+            <form method="post" action="{{ url_for('add_comment') }}" enctype=multipart/form-data>
+                <label for="comment"></label>
+                <input type="text" name="comment"/>
+                <input type="submit" value="comment" />
+                <input type="hidden" name="user" value="{{ user }}" />
+                <input type="hidden" name="photo_id" value="{{ photo_id }}" />
+            </form>
+        <li>
+            {% if(comments) %}
+                {% for com in comments %}
+                    <ul>{{ com.uname }} : {{ com.comment }}</ul>
+                {% endfor %}
+            {% endif %}
+        </li>
+    {% endif %}
+</body>
+</html>

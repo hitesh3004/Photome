@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album</title>
+</head>
+<body>
+    <form method="post" action="{{ url_for('create_album') }}">
+        <label>Create New Album here</label></br>
+        <label for="album_name">Album Name : </label>
+        <input type="text" name="album_name">
+        <input type="submit" value="Create Album">
+    </form>
+    {% if(user_album) %}
+    <h2>Here's your albums</h2>
+        {% for album in user_album %}
+            <li><a href='/display_album?album_id={{ album[0] }}'> {{album[1]}}</a></li>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
