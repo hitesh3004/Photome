@@ -22,8 +22,10 @@ Each comment is identified by a unique comment id and has the following attribut
 #Use cases
 ##User management
 Becoming a registered user. Before being able to upload photos a user should register by providing their first name, last name, email address, date of birth, and a password. If the user already exists in the database with the same email address an error message is produced.
-##Adding and Listing Friends. I have allowed a user to add a new friend on the friend list. For simplicity,I am not verifying the friendship relationship. Also, you should allow the user to search for other users in the system (in order to find friends to add.) Finally, I have allowed a user to list his/her friends.
-##User activity. To motivate users in using the site we'd like to identify the ones who make the largest contribution and list them on the site. We'll measure the contribution of a user as the number of photos they have uploaded plus the number of comments they have left for photos belonging to other users. The top 10 users should be reported.
+##Adding and Listing Friends. 
+I have allowed a user to add a new friend on the friend list. For simplicity,I am not verifying the friendship relationship. Also, you should allow the user to search for other users in the system (in order to find friends to add.) Finally, I have allowed a user to list his/her friends.
+##User activity.
+To motivate users in using the site we'd like to identify the ones who make the largest contribution and list them on the site. We'll measure the contribution of a user as the number of photos they have uploaded plus the number of comments they have left for photos belonging to other users. The top 10 users should be reported.
 ##Album and photo management
 Photo and album browsing. Every visitor to the site, registered or not, should be allowed to browse photos. In this project we will assume that all photos and albums are made public by their authors.
 Photo and album creating. After registration, users can start creating albums and uploading photos. The relevant fields are described above. Users should also be able to delete both albums and photos. If an non-empty album is deleted its photos should also be purged. Users should only be allowed to modify and delete albums and photos which they own.
