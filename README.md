@@ -1,5 +1,5 @@
 # Photome
-Photome is an on-line photo social network system.
+Photome is an on-line photo social network application.
 
 #Purpose of the project
 In this project, I have designed and implemented a database system for a web based photo social sharing application. I have also provided the web based interface to the database. The final system is functional and is similar to Flickr!
